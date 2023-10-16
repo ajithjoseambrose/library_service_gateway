@@ -1,0 +1,33 @@
+server:
+  port: 8000
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://16.16.107.91:8761/eureka/
+  instance:
+    hostname: localhost
+
+spring:
+  application:
+    name: GATEWAY-SERVICE
+
+  cloud:
+    gateway:
+      routes:
+        - id: student-service
+          uri: lb://STUDENT-SERVICE
+          predicates:
+            - Path=/slot/**
+
+        - id: student-service
+          uri: lb://STUDENT-SERVICE
+          predicates:
+            - Path=/student/**
+
+        - id: book-service
+          uri: lb://BOOK-SERVICE
+          predicates:
+            - Path=/books/**

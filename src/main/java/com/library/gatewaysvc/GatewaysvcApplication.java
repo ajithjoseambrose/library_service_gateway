@@ -10,6 +10,7 @@ public class GatewaysvcApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GatewaysvcApplication.class, args);
+		System.out.println("test for new build");
 	}
 
 }
